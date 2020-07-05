@@ -1,6 +1,6 @@
 {
   "name": "@dustinrouillard/fastify-security",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JWT/Fastify related security functions",
   "author": "Dustin Rouillard <code@dustin.sh>",
   "scripts": {
