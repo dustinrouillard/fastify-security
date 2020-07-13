@@ -10,9 +10,6 @@
     "push": "yarn build; cp -R package.json README.md LICENSE dist; (cd dist && yarn publish --non-interactive); rm -rf dist/package.json dist/README.md dist/LICENSE",
     "lnk": "yarn build; cp -R package.json README.md LICENSE dist; (cd dist && yarn link)"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "license": "MIT",
   "devDependencies": {
     "@types/jsonwebtoken": "^8.3.9",
