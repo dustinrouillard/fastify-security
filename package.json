@@ -1,13 +1,13 @@
 {
   "name": "@dustinrouillard/fastify-security",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "JWT/Fastify related security functions",
   "author": "Dustin Rouillard <code@dustin.sh>",
   "scripts": {
     "build": "tsc",
     "build:w": "tsc -w",
     "dev": "tsc -w",
-    "push": "yarn build; cp -R package.json README.md LICENSE dist; (cd dist && yarn publish --non-interactive); rm -rf dist/package.json dist/README.md dist/LICENSE",
+    "push": "yarn build; cp -R package.json README.md LICENSE dist; (cd dist && yarn publish); rm -rf dist/package.json dist/README.md dist/LICENSE",
     "lnk": "yarn build; cp -R package.json README.md LICENSE dist; (cd dist && yarn link)"
   },
   "license": "MIT",
@@ -18,9 +18,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@dustinrouillard/fastify-utilities": "^1.0.2",
-    "fastify": "^2.14.1",
-    "fastify-plugin": "^1.6.1",
+    "@dustinrouillard/fastify-utilities": "^1.0.5",
+    "fastify": "^3.2.1",
+    "fastify-plugin": "^2.3.0",
     "jsonwebtoken": "^8.5.1"
   }
 }

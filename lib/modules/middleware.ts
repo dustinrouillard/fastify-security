@@ -1,20 +1,19 @@
-import { Plugin } from 'fastify';
 import fastifyPlugin from 'fastify-plugin';
 import { Server, IncomingMessage, ServerResponse } from 'http';
-import { FastifyRequest, FastifyReply, FastifyInstance, RegisterOptions } from 'fastify';
+import { FastifyRequest, FastifyReply, FastifyInstance, RegisterOptions, FastifyPluginCallback, FastifyPluginOptions } from 'fastify';
 
 import { verify } from 'jsonwebtoken';
 
 import { Failed } from '@dustinrouillard/fastify-utilities/modules/response';
 
-interface ExpressMiddlewareConfig {
+interface MiddlewareConfig {
   secret?: string;
   issuer?: string;
 }
 
-export function Middleware({ secret, issuer }: ExpressMiddlewareConfig = {}): Plugin<Server, IncomingMessage, ServerResponse, {}> {
-  return fastifyPlugin(function Logger(server: FastifyInstance<Server, IncomingMessage, ServerResponse>, _options: RegisterOptions<{}, {}, {}>, next?: () => void) {
-    server.addHook('onRequest', (request: FastifyRequest, reply: FastifyReply<ServerResponse>, done?: () => void) => {
+export function Middleware({ secret, issuer }: MiddlewareConfig = {}): FastifyPluginCallback<Server> {
+  return fastifyPlugin(function Logger(server: FastifyInstance<Server, IncomingMessage, ServerResponse>, _options: FastifyPluginOptions, next?: () => void) {
+    server.addHook('onRequest', (request: FastifyRequest, reply: FastifyReply, done?: () => void) => {
       if (!secret) secret = process.env.INTERNAL_SECRET || 'secret';
       if (!issuer) issuer = 'dustin.sh/api';
 
