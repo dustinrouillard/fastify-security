@@ -1,6 +1,6 @@
 import fastifyPlugin from 'fastify-plugin';
 import { Server, IncomingMessage, ServerResponse } from 'http';
-import { FastifyRequest, FastifyReply, FastifyInstance, RegisterOptions, FastifyPluginCallback, FastifyPluginOptions } from 'fastify';
+import { FastifyRequest, FastifyReply, FastifyInstance, FastifyPluginCallback, FastifyPluginOptions } from 'fastify';
 
 import { verify } from 'jsonwebtoken';
 
