@@ -3,11 +3,11 @@ import { verify, sign, decode } from 'jsonwebtoken';
 export function GenerateToken(payload: any, options: { secret?: string; subject?: string; issuer?: string }): string {
   if (!options.secret) options.secret = process.env.INTERNAL_SECRET || 'secret';
 
-  const safe_options = options;
-  delete safe_options.secret;
+  const secret = options.secret;
+  delete options.secret;
 
   // Sign and return the JWT
-  return sign(payload, options.secret, safe_options);
+  return sign(payload, secret, options);
 }
 
 export function DecodeAndVerifyToken<T>(token: string, options: { secret?: string; subject?: string; issuer?: string }): T | null | { [key: string]: any } | object | string | boolean {
