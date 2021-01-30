@@ -1,6 +1,6 @@
-import { verify, sign, decode, SignOptions } from 'jsonwebtoken';
+import { verify, sign, decode, SignOptions, DecodeOptions, VerifyOptions } from 'jsonwebtoken';
 
-export function GenerateToken(payload: any, options: { secret?: string; } & Partial<SignOptions>): string {
+export function GenerateToken(payload: any, options: { secret?: string } & Partial<SignOptions>): string {
   if (!options.secret) options.secret = process.env.INTERNAL_SECRET || 'secret';
 
   const secret = options.secret;
@@ -10,7 +10,7 @@ export function GenerateToken(payload: any, options: { secret?: string; } & Part
   return sign(payload, secret, options);
 }
 
-export function DecodeAndVerifyToken<T>(token: string, options: { secret?: string; } & Partial<SignOptions>): T | null | { [key: string]: any } | object | string | boolean {
+export function DecodeAndVerifyToken<T>(token: string, options: { secret?: string } & Partial<VerifyOptions> & Partial<DecodeOptions>): T | boolean {
   if (!options.secret) options.secret = process.env.INTERNAL_SECRET || 'secret';
 
   // Verify the incoming token against our secret
@@ -20,5 +20,5 @@ export function DecodeAndVerifyToken<T>(token: string, options: { secret?: strin
   // Decode and return the results
   let tokenDecode = decode(token);
 
-  return tokenDecode || tokenVerify;
+  return ((tokenDecode || tokenVerify) as unknown) as T;
 }
