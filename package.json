@@ -1,6 +1,6 @@
 {
   "name": "@dustinrouillard/fastify-security",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "JWT/Fastify related security functions",
   "author": "Dustin Rouillard <code@dustin.sh>",
   "scripts": {
@@ -17,8 +17,8 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@dustinrouillard/fastify-utilities": "^1.2.7",
     "@types/jsonwebtoken": "^8.3.9",
-    "@dustinrouillard/fastify-utilities": "^1.2.4",
     "fastify": "^3.9.2",
     "fastify-plugin": "^3.0.0",
     "jsonwebtoken": "^8.5.1"
